@@ -26,26 +26,25 @@
     </style>
 
     <app-datepicker id="datePicker" class="no-padding"
-    first-day-of-week="[[firstDayOfWeek]]"
-    disable-days="[[disableDays]]"
-    disable-dates="[[disableDates]]"
-    min-date="[[minDate]]"
-    max-date="[[maxDate]]"
-    format="[[format]]"
-    date="{{_readOnlyDate}}"
-    input-date="[[inputDate]]"
-    show-long-date="[[showLongDate]]"
-    no-animation="[[noAnimation]]"
-    page-entry-animation="[[pageEntryAnimation]]"
-    page-exit-animation="[[pageExitAnimation]]"
-    invalid-date="{{_readOnlyInvalidDate}}"
-    view="[[view]]"
-    theme="[[theme]]"
-    locale="[[locale]]"
-    no-animation
-    always-reset-selected-date-on-dialog-close="[[alwaysResetSelectedDateOnDialogClose]]">
-        <paper-button slot="dismiss-button" noink="[[noAnimation]]" dialog-dismiss>[[ dismissLabel ]]</paper-button>
-        <paper-button slot="confirm-button" noink="[[noAnimation]]" dialog-confirm>[[ confirmLabel ]]</paper-button>
+      auto-update-date="[[autoUpdateDate]]"
+      first-day-of-week="[[firstDayOfWeek]]"
+      disable-days="[[disableDays]]"
+      disable-dates="[[disableDates]]"
+      min-date="[[minDate]]"
+      max-date="[[maxDate]]"
+      format="[[format]]"
+      date="{{_readOnlyDate}}"
+      input-date="[[inputDate]]"
+      show-long-date="[[showLongDate]]"
+      no-animation="[[noAnimation]]"
+      page-entry-animation="[[pageEntryAnimation]]"
+      page-exit-animation="[[pageExitAnimation]]"
+      invalid-date="{{_readOnlyInvalidDate}}"
+      view="[[view]]"
+      theme="[[theme]]"
+      locale="[[locale]]"
+      no-animation
+      always-reset-selected-date-on-dialog-close="[[alwaysResetSelectedDateOnDialogClose]]">
     </app-datepicker>
   </template>
   <script>
@@ -55,12 +54,19 @@
       properties: {
         view: String,
         theme: String,
+        autoUpdateDate: {
+          type: Boolean,
+          value: true
+        },
         firstDayOfWeek: Number,
         disableDays: Array,
         disableDates: Array,
         minDate: String,
         maxDate: String,
-        format: String,
+        format: {
+          type: String,
+          value: 'yyyy-mm-dd'
+        },
         date: {
           type: String,
           notify: true,
@@ -77,14 +83,6 @@
         pageEntryAnimation: String,
         pageExitAnimation: String,
         locale: String,
-        confirmLabel: {
-          type: String,
-          value: "ok"
-        },
-        dismissLabel: {
-          type: String,
-          value: "cancel"
-        },
         alwaysResetSelectedDateOnDialogClose: Boolean,
 
         _readOnlyDate: String,
