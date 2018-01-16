@@ -1003,7 +1003,7 @@ Custom property | Description | Default
       detached: function () { },
 
       _handleDateClick: function (ev) {
-        const selectedDate = this._activeYear + '-' + (this._activeMonth + 1) + '-' + ev.model.item.date;
+        const selectedDate = this._activeYear + '-' + (this._padStart(_selectedMonth + 1, 2, '0')) + '-' + this._padStart(ev.model.item.date, 2, '0');
         this._setDate(selectedDate);
         this.dispatchEvent(new CustomEvent('app-datepicker-date-click', { bubbles: true, composed: true }));
       },
