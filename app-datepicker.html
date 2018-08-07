@@ -1003,8 +1003,8 @@ Custom property | Description | Default
       detached: function () { },
 
       _handleDateClick: function (ev) {
+        if (ev.currentTarget.classList.contains('is-non-selectable')) return;
         const selectedDate = this._activeYear + '-' + (this._padStart(this._activeMonth + 1, 2, '0')) + '-' + this._padStart(ev.model.item.date, 2, '0');
-        // this._setDate(selectedDate);
         this.inputDate = selectedDate;
         this.dispatchEvent(new CustomEvent('app-datepicker-date-click', { bubbles: true, composed: true }));
       },
